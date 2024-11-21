@@ -1,18 +1,6 @@
 version: '3'
 
 services:
-  app:
-    image: python:3.11
-    build: ./app/
-    container_name: app
-    working_dir: /var/www/html/
-    volumes:
-      - ./web/:/var/www/html/
-      - socket:/tmp
-    command: uwsgi --ini /var/www/html/uwsgi.ini
-    restart: always
-    tty: true
-
   app1:
     image: python:3.11
     build: ./app1/
