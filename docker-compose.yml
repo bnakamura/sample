@@ -3,13 +3,13 @@ version: '3'
 services:
   app:
     image: python:3.11
-    build: ${WEB_PATH}
+    build: ./web/
     container_name: app
-    working_dir: ${ROOT_PATH}
+    working_dir: /var/www/html/
     volumes:
-      - ${WEB_PATH}:${ROOT_PATH}
+      - ./web/:${ROOT_PATH}
       - socket:/tmp
-    command: uwsgi --ini ${ROOT_PATH}uwsgi.ini
+    command: uwsgi --ini /var/www/html/uwsgi.ini
     restart: always
     tty: true
 
@@ -18,7 +18,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ${HOME_PATH}nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - socket:/tmp
 
 volumes:
