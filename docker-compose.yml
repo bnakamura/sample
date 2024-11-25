@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  app1:
+  app01:
     image: python:3.11
     build: ./app1/
 #    container_name: app1
