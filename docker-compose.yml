@@ -7,7 +7,7 @@ services:
     container_name: app1
     working_dir: /var/www/html/
     volumes:
-      - ./web/:${ROOT_PATH}
+      - ./web/:/var/www/html/
       - socket:/tmp
     command: uwsgi --ini /var/www/html/uwsgi.ini
     restart: always
