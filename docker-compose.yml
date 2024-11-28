@@ -25,6 +25,18 @@ services:
     restart: always
     tty: true
 
+  app4_1:
+    image: python:3.11
+    build: ./app4_1/
+    container_name: app4_1
+    working_dir: /var/www/html/
+    volumes:
+      - ./app4_1/:/var/www/html/
+      - socket:/tmp
+    command: uwsgi --ini /var/www/html/uwsgi_app4_1.ini
+    restart: always
+    tty: true
+
   nginx:
     image: nginx:latest
     ports:
